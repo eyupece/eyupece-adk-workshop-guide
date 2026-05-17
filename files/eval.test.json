@@ -1,0 +1,128 @@
+{
+  "eval_set_id": "customer_service_eval",
+  "name": "Customer Service Agent Evaluation",
+  "description": "Evaluation suite for the customer service agent covering product info, purchase history, and refunds.",
+  "eval_cases": [
+    {
+      "eval_id": "product_info_check",
+      "session_input": {
+        "app_name": "customer_service_agent",
+        "user_id": "eval_user_1",
+        "state": {}
+      },
+      "conversation": [
+        {
+          "invocation_id": "turn_1_product_info",
+          "user_content": {
+            "role": "user",
+            "parts": [
+              {
+                "text": "Do you have wireless headphones in stock?"
+              }
+            ]
+          },
+          "final_response": {
+            "role": "model",
+            "parts": [
+              {
+                "text": "Yes, we have wireless headphones in stock! They are priced at $120.00 and feature noise-canceling with a 20-hour battery life."
+              }
+            ]
+          },
+          "intermediate_data": {
+            "tool_uses": [
+              {
+                "name": "lookup_product_info",
+                "args": {
+                  "product_name": "wireless headphones"
+                }
+              }
+            ],
+            "intermediate_responses": []
+          }
+        }
+      ]
+    },
+    {
+      "eval_id": "purchase_history_check",
+      "session_input": {
+        "app_name": "customer_service_agent",
+        "user_id": "eval_user_2",
+        "state": {}
+      },
+      "conversation": [
+        {
+          "invocation_id": "turn_1_purchase_history",
+          "user_content": {
+            "role": "user",
+            "parts": [
+              {
+                "text": "What did I buy recently? My customer ID is CUST001."
+              }
+            ]
+          },
+          "final_response": {
+            "role": "model",
+            "parts": [
+              {
+                "text": "Here's your recent purchase history for Customer ID CUST001:\n\n*   **Order ORD-101** (October 15, 2023): Wireless Headphones, Status: delivered, Total: $120\n*   **Order ORD-102** (November 1, 2023): USB-C Cable, Phone Case, Status: refunded, Total: $35\n\nLet me know if you have any other questions or need further assistance!"
+              }
+            ]
+          },
+          "intermediate_data": {
+            "tool_uses": [
+              {
+                "name": "get_purchase_history",
+                "args": {
+                  "customer_id": "CUST001"
+                }
+              }
+            ],
+            "intermediate_responses": []
+          }
+        }
+      ]
+    },
+    {
+      "eval_id": "refund_request",
+      "session_input": {
+        "app_name": "customer_service_agent",
+        "user_id": "eval_user_3",
+        "state": {}
+      },
+      "conversation": [
+        {
+          "invocation_id": "turn_1_refund",
+          "user_content": {
+            "role": "user",
+            "parts": [
+              {
+                "text": "I want a refund for order ORD-102 because it was damaged."
+              }
+            ]
+          },
+          "final_response": {
+            "role": "model",
+            "parts": [
+              {
+                "text": "Your refund for order **ORD-102** due to \"damaged\" has been successfully processed! Refund amount: **$35.0**. Your order status has been updated to **refunded**.\nIs there anything else I can help you with today?"
+              }
+            ]
+          },
+          "intermediate_data": {
+            "tool_uses": [
+              {
+                "name": "issue_refund",
+                "args": {
+                  "order_id": "ORD-102",
+                  "reason": "damaged"
+                }
+              }
+            ],
+            "intermediate_responses": []
+          }
+        }
+      ]
+    }
+  ]
+}

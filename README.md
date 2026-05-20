@@ -2,7 +2,7 @@
 
 Bu rehber, Google Agent Development Kit (ADK) ile bir müşteri hizmetleri agent'ı oluşturmayı ve değerlendirmeyi adım adım anlatır.
 
-**Slide Linki:** https://docs.google.com/presentation/d/1C1YfGnp_8mIzDkQqepyuJ2uV5l1uaEFI9XrHiIc1hvI/edit?usp=sharing
+**Slide Linki:** https://docs.google.com/presentation/d/1C1YfGnp_8mIzDkQqepyuJ2uV5l1uaEFI9XrHiIc1hvI
 **Yayın Linki:** https://www.youtube.com/watch?v=S_d-BtBcbpk  
 **Starter Repo:** https://github.com/cuppibla/adk_eval_starter  
 **ADK Dokümantasyonu:** https://adk.dev/
